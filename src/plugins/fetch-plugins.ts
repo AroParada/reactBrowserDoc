@@ -17,18 +17,19 @@ export const fetchPlugin = (inputCode: string) => {
           };
         });
 
+      build.onLoad({ filter: /.*/ }, async (args: any) =>{
+        const cachedResult = await filedCache.getItem<esbuild.OnLoadResult>(
+          args.path
+        );
+      
+        // if it is, return it imediately
+        if (cachedResult) {
+          return cachedResult;
+        }
+      });
+
         build.onLoad({ filter: /.css$/ }, async (args: any) => {
-            // check to see if we have already fetched file
-            // and if its in the cache
-            const cachedResult = await filedCache.getItem<esbuild.OnLoadResult>(args.path);
-    
-            // if it is, return it imediately
-            if (cachedResult) {
-              return cachedResult;
-            }
-    
             const { data , request } = await axios.get(args.path);
-    
             const escaped  = data
               .replace(/\n/g, '')
               .replace(/"/g, '\\"')
@@ -51,17 +52,8 @@ export const fetchPlugin = (inputCode: string) => {
           });
 
         build.onLoad({ filter: /.*/ }, async (args: any) => {
-            // check to see if we have already fetched file
-            // and if its in the cache
-            const cachedResult = await filedCache.getItem<esbuild.OnLoadResult>(args.path);
-    
-            // if it is, return it imediately
-            if (cachedResult) {
-              return cachedResult;
-            }
-    
             const { data , request } = await axios.get(args.path);
-    
+            
             const result: esbuild.OnLoadResult = {
               loader: 'jsx',
               contents: data,
