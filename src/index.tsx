@@ -29,10 +29,7 @@ const App = () => {
         entryPoints: ['index.js'],
         bundle: true,
         write: false,
-        plugins: [
-            unpkgPathPlugin(),
-            fetchPlugin(input)
-        ],
+        plugins: [unpkgPathPlugin(), fetchPlugin(input)],
         define: {
             'process.env.NODE_ENV': '"production"',
             global: 'window',
