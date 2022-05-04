@@ -1,3 +1,4 @@
+import { stat } from "fs";
 import produce from "immer";
 import { ActionType } from "../action-types";
 import { Action } from "../actions";
@@ -45,10 +46,32 @@ const reducer = produce((state: CellsState = initalState, action: Action) => {
 
       return;
     case ActionType.INSERT_CELL_BEFORE:
+      const cell: Cell = {
+        content: "",
+        type: action.payload.type,
+        id: randomId(),
+      };
+
+      state.data[cell.id] = cell;
+
+      const foundIndex = state.order.findIndex(
+        (id) => id === action.payload.id
+      );
+
+      if (foundIndex < 0) {
+        state.order.push(cell.id);
+      } else {
+        state.order.splice(foundIndex, 0, cell.id);
+      }
+
       return state;
     default:
       return state;
   }
 });
+
+const randomId = () => {
+  return Math.random().toString(36).substring(2, 5);
+};
 
 export default reducer;
