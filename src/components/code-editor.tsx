@@ -1,8 +1,11 @@
 import "./code-editor.css";
+import "./syntax.css";
 import { useRef } from "react";
 import MonacoEditor, { EditorDidMount } from "@monaco-editor/react";
 import prettier from "prettier";
 import parser from "prettier/parser-babel";
+import codeShift from "jscodeshift";
+import Highlighter from "monaco-jsx-highlighter";
 
 interface CodeEditorProps {
   initialValue: string;
@@ -11,6 +14,7 @@ interface CodeEditorProps {
 
 const CodeEditor: React.FC<CodeEditorProps> = ({ onChange, initialValue }) => {
   const editorRef = useRef<any>();
+
   const onEditorDidMount: EditorDidMount = (getValue, monacoEditor) => {
     editorRef.current = monacoEditor;
     monacoEditor.onDidChangeModelContent(() => {
@@ -18,12 +22,26 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ onChange, initialValue }) => {
     });
 
     monacoEditor.getModel()?.updateOptions({ tabSize: 2 });
+
+    const highlighter = new Highlighter(
+      // @ts-ignore
+      window.monaco,
+      codeShift,
+      monacoEditor
+    );
+    highlighter.highLightOnDidChangeModelContent(
+      () => {},
+      () => {},
+      undefined,
+      () => {}
+    );
   };
 
   const onFormatClick = () => {
-    //get current value from editor
+    // get current value from editor
     const unformatted = editorRef.current.getModel().getValue();
-    //format that value
+
+    // format that value
     const formatted = prettier
       .format(unformatted, {
         parser: "babel",
@@ -32,9 +50,9 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ onChange, initialValue }) => {
         semi: true,
         singleQuote: true,
       })
-      //removes extra line
       .replace(/\n$/, "");
-    //set the formatted value back in the editor
+
+    // set the formatted value back in the editor
     editorRef.current.setValue(formatted);
   };
 
@@ -44,7 +62,7 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ onChange, initialValue }) => {
         className="button button-format is-primary is-small"
         onClick={onFormatClick}
       >
-        format
+        Format
       </button>
       <MonacoEditor
         editorDidMount={onEditorDidMount}

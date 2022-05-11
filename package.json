@@ -18,7 +18,8 @@
     "axios": "0.21.1",
     "bulmaswatch": "^0.8.1",
     "esbuild-wasm": "0.8.27",
-    "immer": "^9.0.12",
+    "immer": "^8.0.0",
+    "jscodeshift": "^0.13.1",
     "localforage": "^1.10.0",
     "monaco-editor": "0.33.0",
     "prettier": "^2.6.2",
@@ -55,5 +56,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/jscodeshift": "^0.11.5"
   }
 }
