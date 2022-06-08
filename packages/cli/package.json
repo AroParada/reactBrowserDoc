@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "caniuse-lite": "^1.0.30001350",
     "commander": "^7.0.0",
     "local-api": "^1.0.0"
   },
