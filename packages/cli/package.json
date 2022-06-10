@@ -1,20 +1,30 @@
 {
-  "name": "cli",
+  "name": "thejsnotebook",
   "version": "1.0.0",
   "description": "",
+  "publishConfig": {
+    "access": "public"
+  },
+  "bin": "dist/index.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "start": "tsc --watch --preserveWatchOutput"
+    "start": "tsc --watch --preserveWatchOutput",
+    "prepublishOnly": "esbuild src/index.ts --platform=node --outfile=dist.index.js --bundle --minify --define:process.env.NODE_ENV=\\\"production\\\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "caniuse-lite": "^1.0.30001350",
-    "commander": "^7.0.0",
-    "local-api": "^1.0.0"
+    "thejsnotebook/local-client": "1.0.0"
   },
   "devDependencies": {
+    "@thejsnotebook/local-api": "^1.0.0",
+    "caniuse-lite": "^1.0.30001350",
+    "commander": "^7.0.0",
     "@types/node": "^14.14.22",
+    "esbuild": "0.8.26",
     "typescript": "^4.1.3"
   }
 }
