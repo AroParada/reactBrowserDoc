@@ -17,9 +17,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "local-client": "1.0.0"
+    "commander": "^7.0.0",
+    "@thejsnotebook/local-api": "^1.0.0"
   },
   "devDependencies": {
+    "local-client": "1.0.0",
     "@thejsnotebook/local-api": "^1.0.0",
     "caniuse-lite": "^1.0.30001350",
     "commander": "^7.0.0",
