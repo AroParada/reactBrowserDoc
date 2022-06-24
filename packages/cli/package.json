@@ -17,7 +17,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "thejsnotebook/local-client": "1.0.0"
+    "local-client": "1.0.0"
   },
   "devDependencies": {
     "@thejsnotebook/local-api": "^1.0.0",

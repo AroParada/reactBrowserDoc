@@ -72,16 +72,16 @@ var createCellsRouter = function (filename, dir) {
             }
         });
     }); });
-    router.post("./cells", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    router.post("/cells", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
         var cells;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     cells = req.body.cells;
-                    // write the cells into the file
+                    // Write the cells into the file
                     return [4 /*yield*/, promises_1.default.writeFile(fullPath, JSON.stringify(cells), "utf-8")];
                 case 1:
-                    // write the cells into the file
+                    // Write the cells into the file
                     _a.sent();
                     res.send({ status: "ok" });
                     return [2 /*return*/];

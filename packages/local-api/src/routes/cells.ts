@@ -5,7 +5,7 @@ import path from "path";
 interface Cell {
   id: string;
   content: string;
-  type: "text | code";
+  type: "text" | "code";
 }
 
 export const createCellsRouter = (filename: string, dir: string) => {
@@ -16,7 +16,7 @@ export const createCellsRouter = (filename: string, dir: string) => {
 
   router.get("/cells", async (req, res) => {
     try {
-      // Read file
+      // Read the file
       const result = await fs.readFile(fullPath, { encoding: "utf-8" });
 
       res.send(JSON.parse(result));
@@ -30,11 +30,12 @@ export const createCellsRouter = (filename: string, dir: string) => {
     }
   });
 
-  router.post("./cells", async (req, res) => {
-    // take the list of cells from the requesr obj
+  router.post("/cells", async (req, res) => {
+    // Take the list of cells from the request obj
     // serialize them
     const { cells }: { cells: Cell[] } = req.body;
-    // write the cells into the file
+
+    // Write the cells into the file
     await fs.writeFile(fullPath, JSON.stringify(cells), "utf-8");
 
     res.send({ status: "ok" });
