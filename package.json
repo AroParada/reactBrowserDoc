@@ -1,10 +1,15 @@
 {
-  "name": "jbook",
+  "name": "@thejsnotebook/local-client",
   "version": "0.1.0",
-  "private": true,
-  "dependencies": {
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "build"
+  ],
+  "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.15.1",
-    "@monaco-editor/react": "3.7.4",
+    "@monaco-editor/react": "3.7.5",
     "@testing-library/jest-dom": "^5.11.8",
     "@testing-library/react": "^11.2.2",
     "@testing-library/user-event": "^12.6.0",
@@ -19,6 +24,7 @@
     "@uiw/react-md-editor": "2.1.1",
     "axios": "0.21.1",
     "bulmaswatch": "^0.8.1",
+    "caniuse-lite": "^1.0.30001350",
     "esbuild-wasm": "0.8.27",
     "immer": "^8.0.0",
     "jscodeshift": "0.11.0",
@@ -41,7 +47,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "prepublishOnly": "npm run build"
   },
   "eslintConfig": {
     "extends": [
@@ -60,5 +67,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "dependencies": {
+    "esbuild": "^0.14.43"
   }
 }

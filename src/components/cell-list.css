@@ -1,7 +1,7 @@
 .cell-list {
-    margin: 0 25px 25vh;
-};
+  margin: 0 25px 50vh;
+}
 
-.react-draggable-transparent-selecetion .cell-list {
-    margin-bottom: 100vh;
+.react-draggable-transparent-selection .cell-list {
+  margin-bottom: 100vh;
 }
