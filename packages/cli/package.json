@@ -1,6 +1,6 @@
 {
   "name": "thejsnotebook",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "",
   "publishConfig": {
     "access": "public"
@@ -17,7 +17,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@thejsnotebook/local-api": "^1.0.0",
+    "@thejsnotebook/local-api": "^2.0.0",
     "commander": "^7.0.0"
   },
   "devDependencies": {
