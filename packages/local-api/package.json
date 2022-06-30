@@ -23,7 +23,7 @@
     "typescript": "^4.1.3"
   },
   "dependencies": {
-    "@thejsnotebook/local-client": "^0.1.0",
+    "@thejsnotebook/local-client": "^1.0.0",
     "caniuse-lite": "^1.0.30001350",
     "cors": "^2.8.5",
     "esbuild": "^0.14.43",
