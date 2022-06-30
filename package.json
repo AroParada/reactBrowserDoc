@@ -5,6 +5,8 @@
     "lerna": "^3.22.1"
   },
   "scripts": {
-    "start": "lerna run start --parallel"
+    "start": "lerna run start --parallel",
+    "ysf:version": "lerna version --conventional-commits",
+    "ysf:publish": "lerna publish --conventional-commits"
   }
 }
