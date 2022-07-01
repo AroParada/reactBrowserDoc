@@ -1,6 +1,6 @@
 {
   "name": "@thejsnotebook/local-client",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "publishConfig": {
     "access": "public"
   },
@@ -71,5 +71,5 @@
   "dependencies": {
     "esbuild": "^0.14.43"
   },
-  "gitHead": "eda1b2033f5f615a5b1defb581b8258d9e6dee0a"
+  "gitHead": "51a01eedd6411ffdde717397ef34de604f182b55"
 }
